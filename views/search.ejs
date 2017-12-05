@@ -20,7 +20,27 @@
                     <li><%= descriptions[i][j] %></li>
                 <% } %>
             </ul>
-            <input type="submit" value="Add to Log" />
+            <form action="/food/add" method="post">
+                <label for="food_name">Calories:</label>
+                <input class="food-input" type="text" id="food_name" name="food_name" value="<%= results[i].food_name %>" />
+                
+                <label for="brand_name">Calories:</label>
+                <input class="food-input" type="text" id="brand_name" name="brand_name" value="<%= results[i].brand_name %>" />
+         
+                <label for="calories">Calories:</label>
+                <input class="food-input" type="text" id="calories" name="calories" value="<%= descriptions[i][0]%>" />
+         
+                <label for="protein">Protein:</label>
+                <input class="food-input" type="text" id="protein" name="protein" value="<%= descriptions[i][1]%>" />
+
+                <label for="carbs">Carbs:</label>
+                <input class="food-input" type="text" id="carbs" name="carbs" value="<%= descriptions[i][2]%>" />
+     
+                <label for="fat">Fat:</label>
+                <input class="food-input" type="text" id="fat" name="fat" value="<%= descriptions[i][3]%>" />
+        
+                <input type="submit" value="Add to Log" />
+            </form>
         <% } %>
     </ul>
   </body>
