@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <% include templates/header %>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/profile.css"/>
+  </head>
+  <body>
+    <% include templates/navbar %>
+    <h1 class="username"><%= user.username %></h1>
+    <% if (user.calories) { %>
+    <div class="nutrition-list">
+      <div>Calories</div>
+      <div>Protein</div>
+      <div>Carbs</div>
+      <div>Fat</div>
+    </div>
+    <div class="nutrition-list">
+      <div><%= user.calories %></div>
+      <div><%= user.protein %></div>
+      <div><%= user.carbs %></div>
+      <div><%= user.fat %></div>
+    </div>
+    <% } else { %>
+      <div class="add-nutrition">
+        You have not added nutrition information! Click <a>here</a>
+      </div>
+    <% } %>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Food</title>
+    <% include templates/header %>
+  </head>
+  <body>
+    <% include templates/navbar %>
+    <h1>Food search</h1>
+    <form action="/food/search" method="post">
+        <label for="food">Search for a food:</label>
+        <input type="text" id="food" name="food" placeholder="Enter Food" />
+        <input type="submit" value="Login" />
+    </form>
+  </body>
+</html>
+

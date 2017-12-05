@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include templates/header %>  
+</head>
+
+<body>
+    <% include templates/navbar %>
+    <h1>This is the Nutrition Change page</h1>
+            <form action="/users/<%=user.username%>/updatenutrition" method="post">
+                <label for="protein">Protein:</label>
+                <input type="text" id="protein" name="protein" placeholder="Protein" />
+                <br>
+                <br>
+                <label for="carbs">Carbs:</label>
+                <input type="text" id="carbs" name="carbs" placeholder="Carbs" />
+                <br>
+                <br>
+                <label for="fat">Fat:</label>
+                <input type="text" id="fat" name="fat" placeholder="Fat" />
+                <br>
+                <br>
+                <input type="submit" value="Update" />
+            </form>
+</body>
+
+</html>

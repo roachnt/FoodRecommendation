@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include templates/header %>  
+</head>
+
+<body>
+    <% include templates/navbar %>
+    <h1>This is the Login page</h1>
+    <% if (failedLogin) { %>
+        <p style="color: red;">Incorrect username or password</p>
+        <% } %>
+            <form action="/login/authenticate" method="post">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Username" />
+                <br>
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Password" />
+                <br>
+                <br>
+                <input type="submit" value="Login" />
+            </form>
+</body>
+
+</html>
