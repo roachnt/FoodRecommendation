@@ -1,30 +1,83 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <% include templates/header %>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/profile.css"/>
-  </head>
-  <body>
-    <% include templates/navbar %>
-    <h1 class="username"><%= user.username %></h1>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <% include templates/header %>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/profile.css" />
+</head>
+
+<body>
+  <% include templates/navbar %>
+    <h1 class="username">
+      <%= user.username %>
+    </h1>
     <% if (user.calories) { %>
-    <div class="nutrition-list">
-      <div>Calories</div>
-      <div>Protein</div>
-      <div>Carbs</div>
-      <div>Fat</div>
-    </div>
-    <div class="nutrition-list">
-      <div><%= user.calories %></div>
-      <div><%= user.protein %></div>
-      <div><%= user.carbs %></div>
-      <div><%= user.fat %></div>
-    </div>
-    <% } else { %>
-      <div class="add-nutrition">
-        You have not added nutrition information! Click <a>here</a>
+      <div class="nutrition-list">
+        <div>Calories</div>
+        <div>Protein</div>
+        <div>Carbs</div>
+        <div>Fat</div>
       </div>
-    <% } %>
-  </body>
+      <div class="nutrition-list nutrition-values">
+        <div class="val">
+          <%= nutritionLeft[0] %>
+        </div>
+        <div class="val">
+          <%= nutritionLeft[1] %>
+        </div>
+        <div class="val">
+          <%= nutritionLeft[2] %>
+        </div>
+        <div class="val">
+          <%= nutritionLeft[3] %>
+        </div>
+      </div>
+      <% } else { %>
+        <div class="add-nutrition">
+          You have not added nutrition information! Click
+          <a href="/users/<%= user.username %>/nutrition">here</a>
+        </div>
+        <% } %>
+        <% if (logs.length > 0) { %>
+        <form action="/users/<%= user.username %>/deletefood" method="post">          
+          <table class="food-log">
+            <tr>
+              <th>Food</th>
+              <th>Brand</th>
+              <th>Calories</th>
+              <th>Protein</th>
+              <th>Carbs</th>
+              <th>Fat</th>
+              <th>Select</th>
+            </tr>
+            <% logs.forEach(entry => { %>
+              <tr>
+                  <td><%= entry.food_name %></td>
+                  <% if (entry.brand_name) { %>
+                  <td><%= entry.food_name %></td>
+                  <td><%= entry.brand_name %></td>
+                  <% } else { %>
+                  <td>-</td>
+                  <% } %>
+                  <td><%= entry.calories %></td>
+                  <td><%= entry.protein %></td>
+                  <td><%= entry.carbs %></td>
+                  <td><%= entry.fat %></td>
+                  <td><input style="margin: 0;" name="<%= entry.id %>" type="checkbox"/></td>
+              </tr>
+              <% }); %>
+          </table>
+          <input style="float: right; margin-top: 5px;" type="submit" value="Delete Selected"/>
+          </form>
+          <% } else { %>
+            <div class="add-nutrition">
+                You have not added any food to your log! Click
+                <a href="/food">here</a>
+          <% } %>
+          <script src="/javascripts/profile.js"></script>
+</body>
+
 </html>

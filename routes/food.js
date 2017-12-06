@@ -47,14 +47,14 @@ router.post('/add', function (req, res, next) {
         res.redirect('/register');
         return;
     }
-    var food_name = req.body.food_name;
-    var brand_name = req.body.brand_name;
+    var food_name = req.body.food_name.replace("'", "''");
+    var brand_name = req.body.brand_name.replace("'", "''");
     var calories = parseInt(req.body.calories);
     var protein = parseFloat(req.body.protein);
     var carbs = parseFloat(req.body.carbs);
     var fat = parseFloat(req.body.fat);
 
-    var query = `INSERT INTO food_logs VALUES ('${food_name}',
+    var query = `INSERT INTO food_logs (food_name, brand, calories, protein, carbs, fat, username, log_date) VALUES ('${food_name}',
         '${brand_name}', ${calories}, ${protein}, ${carbs},
         ${fat}, '${sess.username}', CURDATE());`;
     console.log(food_name);

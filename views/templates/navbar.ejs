@@ -14,30 +14,36 @@
                     <a href="/food">
                             <span class="glyphicon glyphicon-apple"></span> Food</a>
                 </li>
-                <li>
-                    <a href="#">
-                            <span class="glyphicon glyphicon-send"></span> Messages
-                    </a>
-                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                    <hr class="mobile-line" style="border: 1px solid white; margin: 0;">
+                <hr class="mobile-line" style="border: 1px solid white; margin: 0;">
                 <% if (sess) { %>
-                <li>
-                    <a href="/users/<%= sess.username %>">
-                        <span class="glyphicon glyphicon-user"></span> <%= sess.username %></a>
-                </li>
-                
-                <% } else { %>
-                <li>
-                    <a href="/register">
-                        <span class="glyphicon glyphicon-user"></span> Sign Up</a>
-                </li>
-                <li>
-                    <a href="/login">
-                        <span class="glyphicon glyphicon-log-in"></span> Login</a>
-                </li>
-                <% } %>
+                    <li>
+                        <a href="/users/<%= sess.username %>">
+                            <span class="glyphicon glyphicon-user"></span>
+                            <%= sess.username %>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/messages">
+                            <span class="glyphicon glyphicon-send"></span> Messages
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/logout">
+                            <span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                    </li>
+            
+                    <% } else { %>
+                        <li>
+                            <a href="/register">
+                                <span class="glyphicon glyphicon-user"></span> Sign Up</a>
+                        </li>
+                        <li>
+                            <a href="/login">
+                                <span class="glyphicon glyphicon-log-in"></span> Login</a>
+                        </li>
+                        <% } %>
             </ul>
         </div>
     </div>

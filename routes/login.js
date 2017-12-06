@@ -44,7 +44,7 @@ router.post('/authenticate', function (req, res, next) {
         sess.email = result[0].email; 
         sess.username = req.body.username;
         // Redirect to home
-        res.redirect('/');
+        res.redirect(`/users/${sess.username}`);
       }
       // Otherwise reload login page with notification
       else res.render('login', { failedLogin: true });
